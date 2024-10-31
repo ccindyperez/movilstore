@@ -30,7 +30,7 @@ El propósito de esta pagina web es permitir a la empresa MovilStore poder expan
 La aplicación web permitirá que los usuarios pueden visualizar información sobre la tienda, los productos a la venta en la cual podrán seleccionar los diferentes productos a elegir en donde podrán realizar la compra de dichos productos tecnológicos. 
 
 
- 
+ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 La página principal: 
 
@@ -126,11 +126,7 @@ Los usuarios que hayan iniciado sesión podrán disfrutar de las siguientes func
 
 * Realizar búsquedas de productos: Utilizar la herramienta de búsqueda para encontrar productos específicos de manera rápida y sencilla. 
 
-* Guardar productos como favoritos: Opción para marcar productos de interés y guardarlos en una lista de favoritos para futuras consultas. 
-
 * Agregar productos al carrito y proceder al pago: Capacidad de poder añadir productos al carrito de compras y avanzar al proceso de pago de forma rápida. 
-
-* Historial de pedidos: Acceso a un registro de todas las compras realizadas, permitiendo revisar detalles de pedidos anteriores. 
 
 * Opciones de pago y direcciones guardadas: Gestión de métodos de pago facilitando compras futuras sin necesidad de volver a ingresar información. 
 
@@ -148,13 +144,8 @@ Dashboard
 
 * Revisar y gestionar pedidos recibidos: Supervisar el estado de los pedidos, asegurando un proceso eficiente y efectivo. 
 
-* Gestionar promociones y descuentos: Crear y modificar productos en oferta. 
-
 * Agregar productos: Incluir nuevos artículos al catálogo, ampliando la oferta de la tienda. 
 
-* Gestión de pedidos: Administrar todas las etapas de los pedidos. 
-
-* Estadísticas de ventas: Acceder a reportes y análisis de ventas, proporcionando información valiosa para la toma de decisiones y la planificación de estrategias futuras.
 
 ## Herramienta
 * Laragon
