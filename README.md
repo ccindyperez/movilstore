@@ -152,7 +152,6 @@ Dashboard
 * Laravel
 
 ## Lenguajes y más
-* Blade
 * PHP
 * HTML
 * CSS
