@@ -149,8 +149,10 @@ Dashboard
 
 ## Herramienta
 * Laragon
+* Laravel
 
 ## Lenguajes y más
+* Blade
 * PHP
 * HTML
 * CSS
