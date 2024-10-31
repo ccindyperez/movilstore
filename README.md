@@ -156,7 +156,7 @@ Dashboard
 
 * Estadísticas de ventas: Acceder a reportes y análisis de ventas, proporcionando información valiosa para la toma de decisiones y la planificación de estrategias futuras.
 
-##Herramienta
+## Herramienta
 * Laragon
 
 ## Lenguajes y más
