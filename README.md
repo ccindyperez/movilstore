@@ -52,7 +52,7 @@ En la página principal se incluirán los siguientes elementos:
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
 
-Categoría: 
+Categorías: 
 
 Los productos estarán organizados en la siguiente categoría para poder facilitar la búsqueda y navegación. 
 
