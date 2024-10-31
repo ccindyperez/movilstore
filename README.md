@@ -21,7 +21,7 @@ Laravel es un framework de aplicaciones web con una sintaxis elegante y expresiv
 - Laravel es accesible, potente y proporciona las herramientas necesarias para aplicaciones grandes y sólidas.
 ## Desing Doc.
 
-Tienda electrónica `¨“MovilStore”`
+Tienda electrónica `“MovilStore”`
 
 Este proyecto consiste en una aplicación web de comercio electrónico diseñada para ser adaptable a distintos dispositivos y poder garantizar una experiencia optima tanto en computadora como en dispositivos móviles” responsible”. 
 
@@ -31,7 +31,7 @@ La aplicación web permitirá que los usuarios pueden visualizar información so
 
 Las herramientas a utilizar para la realización: 
 
- 
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 La página principal: 
 
@@ -50,7 +50,7 @@ En la página principal se incluirán los siguientes elementos:
  
 
  
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
 
 Categoría: 
@@ -67,7 +67,7 @@ Los productos estarán organizados en la siguiente categoría para poder facilit
 
 * Audio: sección dedicada a productos de audio, que incluye audífonos y bocinas. 
 
- 
+ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Carrito de compras 
 
@@ -81,7 +81,7 @@ En esta sección del carrito de compra de “MovilStore”, se incluirá los sig
 
 * Realizar pago: Botón destacado para proceder al proceso de pago, donde los usuarios elegirán su método de pago y completar su compra. 
 
- 
+ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Opciones de usuario: 
 
@@ -90,7 +90,7 @@ Opciones de usuario:
 * Inicio de sección: Acceso para usuario ya registrados, permitiéndoles ingresar con su correo electrónico y contraseña, esto le permitirá gestionar su cuenta. 
 
  
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Footer  
 
 Se incluirá los siguientes elementos: 
@@ -103,7 +103,7 @@ Se incluirá los siguientes elementos:
 
 * Dirección: Información sobre la ubicación física de la tienda, para que el cliente pueda encontrar fácilmente el lugar.  
 
- 
+ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Usuarios sin Inicio de Sesión 
 
@@ -116,7 +116,7 @@ Los usuarios que no cuenten con una cuenta o que no hayan iniciado sesión en �
 * Registrarse o iniciar sesión: Posibilidad de crear una nueva cuenta o iniciar sesión en una cuenta existente, lo que les permitirá acceder a funciones adicionales y personalizar su experiencia de compra. 
 
  
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Usuarios con Inicio de Sesión 
 
 Los usuarios que hayan iniciado sesión podrán disfrutar de las siguientes funcionalidades: 
@@ -136,7 +136,7 @@ Los usuarios que hayan iniciado sesión podrán disfrutar de las siguientes func
 * Opciones de pago y direcciones guardadas: Gestión de métodos de pago facilitando compras futuras sin necesidad de volver a ingresar información. 
 
  
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
 
 Administrador de la Tienda 
@@ -157,17 +157,6 @@ Dashboard
 
 * Estadísticas de ventas: Acceder a reportes y análisis de ventas, proporcionando información valiosa para la toma de decisiones y la planificación de estrategias futuras.
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## Lenguaje
 
