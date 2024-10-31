@@ -29,7 +29,6 @@ El propósito de esta pagina web es permitir a la empresa MovilStore poder expan
 
 La aplicación web permitirá que los usuarios pueden visualizar información sobre la tienda, los productos a la venta en la cual podrán seleccionar los diferentes productos a elegir en donde podrán realizar la compra de dichos productos tecnológicos. 
 
-Las herramientas a utilizar para la realización: 
 
  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -156,6 +155,16 @@ Dashboard
 * Gestión de pedidos: Administrar todas las etapas de los pedidos. 
 
 * Estadísticas de ventas: Acceder a reportes y análisis de ventas, proporcionando información valiosa para la toma de decisiones y la planificación de estrategias futuras.
+
+##Herramienta
+* Laragon
+
+## Lenguajes y más
+* PHP
+* HTML
+* CSS
+* Tailwind
+* Boostrap 5
 
 
 ## Lenguaje
