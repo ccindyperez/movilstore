@@ -147,7 +147,7 @@ Dashboard
 * Agregar productos: Incluir nuevos artículos al catálogo, ampliando la oferta de la tienda. 
 
 
-## Herramienta
+## Herramientas
 * Laragon
 * Laravel
 
