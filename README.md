@@ -30,7 +30,7 @@ El propósito de esta pagina web es permitir a la empresa MovilStore poder expan
 La aplicación web permitirá que los usuarios pueden visualizar información sobre la tienda, los productos a la venta en la cual podrán seleccionar los diferentes productos a elegir en donde podrán realizar la compra de dichos productos tecnológicos. 
 
 
- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
 
 La página principal: 
 
