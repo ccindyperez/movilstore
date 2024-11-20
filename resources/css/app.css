@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    scrollbar-color: rgb(17, 17, 209) lightblue;
+}
+
+/* Grid */
+/* html {
+    height: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-rows: 6rem 5rem auto 5rem;
+    grid-template-columns: 23% auto 23%;
+    
+}
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-rows:
+            6rem 6rem 6rem auto 6rem 6rem;
+        grid-template-columns: 1fr;
+    }
+
+    aside,
+    main {
+        grid-column: 1 / 4;
+
+    }
+
+    .right {
+        display: none; 
+    }
+    nav{
+        min-height: 140px;
+    
+    }
+}
+
+
+
+nav,
+header {
+    grid-column: 1 / 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+footer{
+    grid-column: 1 / 4;
+    
+}
+
+
+
+aside,
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin-top: 50px;
+}
+
+main{
+    display: flex;
+    align-items: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    padding: 10px;
+} */
