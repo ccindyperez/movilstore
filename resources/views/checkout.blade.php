@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.tailwindcss.com"></script>
+    @vite('resources/css/app.css')
     <link rel="shortcut icon" href="{{ asset('img/LOGO-P.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Chekout</title>
@@ -22,15 +22,14 @@
             <!-- Menú de Navegación - Visible en Pantallas Grandes -->
             <div class="hidden md:flex space-x-6">
                 <a href="/dashboard" class="hover:text-gray-300">Inicio</a>
-                <a href="#" class="hover:text-gray-300">Características</a>
-                <a href="#" class="hover:text-gray-300">Contacto</a>
+                <a href="#contacto" class="hover:text-gray-300">Contacto</a>
             </div>
 
             @if (Auth::check())
                 <!-- Área de usuario autenticado -->
                 <div class="hidden md:flex items-center relative">
                     <button id="desktop-user-menu-btn" class="flex items-center focus:outline-none">
-                        <img src="{{ auth()->user()->avatar_url ?? 'https://via.placeholder.com/50' }}"
+                        <img src="{{ auth()->user()->avatar_url ?? '/img/iconoUser.png' }}"
                             alt="User Avatar" class="w-10 h-10 rounded-full">
                         <span class="text-white ml-2">{{ auth()->user()->name }}</span>
                         <i class="bi bi-chevron-down ml-2 text-white"></i>
@@ -70,8 +69,7 @@
         <!-- Menú Colapsable para Pantallas Pequeñas -->
         <div id="mobile-menu" class="hidden md:hidden flex flex-col items-center mt-4 space-y-4">
             <a href="/Inicio" class="hover:text-gray-300">Inicio</a>
-            <a href="#" class="hover:text-gray-300">Características</a>
-            <a href="#" class="hover:text-gray-300">Contacto</a>
+            <a href="#contacto" class="hover:text-gray-300">Contacto</a>
             @if (Auth::check())
                 <!-- Opciones del usuario autenticado para pantallas pequeñas
                 <a href="" class="block px-4 py-2 hover:bg-gray-100">Editar Perfil</a>
@@ -115,6 +113,7 @@
             }
         });
     </script>
+    
     <!-- Contenedor Principal del Checkout -->
     <div class="container mx-auto p-6">
         <h1 class="text-3xl font-bold mb-8">Carrito de Compras</h1>

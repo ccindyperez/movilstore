@@ -26,6 +26,7 @@ class UserControllers extends Controller
 
             // Redirigir según el rol del usuario
             if ($user->role == 'admin') {
+                 $user = Auth::user();
                 return redirect()->route('admin.index')->with('success', 'Bienvenido, administrador.');
             } else {
                 return redirect()->route('dashboard')->with('success', 'Inicio de sesión exitoso');
@@ -45,7 +46,7 @@ class UserControllers extends Controller
     public function logout(Request $request)
     {
         Auth::logout(); // Cerrar sesión
-        return redirect()->route('loginUser.login')->with('success', 'Sesión cerrada correctamente');
+        return redirect(url('/'))->with('success', 'Sesión cerrada correctamente');
     }
     public function showForm()
     {
@@ -73,4 +74,27 @@ class UserControllers extends Controller
         // Redirigir al usuario con un mensaje de éxito
         return redirect()->route('loginUser.login')->with('success', '¡Usuario registrado con éxito!');
     }
+
+    public function updateProfile(Request $request)
+{
+    // Valida los datos
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'phone' => 'nullable|string|max:15',
+    ]);
+
+    // Obtén el usuario autenticado
+    $user = Auth::users();
+
+    // Actualiza los datos del usuario
+    $user->update([
+        'name' => $request->input('name'),
+        'email' => $request->input('email'),
+    ]);
+
+    // Redirige con un mensaje de éxito
+    return redirect()->route('profile')->with('success', 'Perfil actualizado correctamente.');
+}
+
 }

@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductosController extends Controller
 {
 
     public function index()
-{
-    $products = Product::with('category')->get(); // Esto es correcto
-    return view('auth.tables', compact('products'));
-}
+    {
+        $products = Product::with('category')->get(); // Esto es correcto
+        return view('auth.tables', compact('products'));
+    }
     public function create()
     {
         return view('auth.admin.admin.create');
@@ -82,5 +84,18 @@ class ProductosController extends Controller
     {
         $products = Product::all();  // O la lógica para obtener los productos
         return view('inicio', compact('products'));
+    }
+
+    public function searchByCategory(Request $request)
+    {
+        $categoryId = $request->input('query'); // El valor del campo de búsqueda
+
+        // Consulta los productos con la categoría especificada
+        $products = DB::table('products')
+            ->where('category', $categoryId)
+            ->get();
+
+        // Retorna los resultados a la vista
+        return view('inicio', compact('products', 'categoryId'));
     }
 }

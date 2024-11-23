@@ -22,14 +22,16 @@
             <!-- Menú de Navegación - Visible en Pantallas Grandes -->
             <div class="flex justify-center space-x-6">
                 <a href="{{ route('dashboard') }}" class="hover:text-gray-300">Inicio</a>
+                <a href="#" class="hover:text-gray-300">Categoria</a>
                 <a href="#contacto" class="hover:text-gray-300">Contacto</a>
             </div>
 
+            <!-- Condición de Autenticación -->
             @if (Auth::check())
                 <!-- Área de usuario autenticado -->
                 <div class="hidden md:flex items-center relative">
                     <button id="desktop-user-menu-btn" class="flex items-center focus:outline-none">
-                        <img src="{{ auth()->user()->avatar_url ?? 'img/iconoUser.png' }}"
+                        <img src="{{ auth()->user()->avatar_url ?? '/img/iconoUser.png' }}"
                             alt="User Avatar" class="w-10 h-10 rounded-full">
                         <span class="text-white ml-2">{{ auth()->user()->name }}</span>
                         <i class="bi bi-chevron-down ml-2 text-white"></i>
@@ -38,7 +40,7 @@
                     <div id="desktop-user-menu"
                         class="hidden absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
                         <!-- <a href="" class="block px-4 py-2 hover:bg-gray-100">Editar Perfil</a>
-                    <a href="" class="block px-4 py-2 hover:bg-gray-100">Mis Pedidos</a>-->
+                        <a href="" class="block px-4 py-2 hover:bg-gray-100">Mis Pedidos</a>-->
                         <form action="{{ route('logout') }}" method="POST" class="inline">
                             @csrf
                             <button type="submit" class="block px-4 py-2 w-full text-left hover:bg-gray-100">Cerrar
@@ -69,6 +71,7 @@
         <!-- Menú Colapsable para Pantallas Pequeñas -->
         <div id="mobile-menu" class="hidden md:hidden flex flex-col items-center mt-4 space-y-4">
             <a href="{{ route('dashboard') }}" class="hover:text-gray-300" class="hover:text-gray-300">Inicio</a>
+            <a href="#" class="hover:text-gray-300">Categorias</a>
             <a href="#contacto" class="hover:text-gray-300">Contacto</a>
             @if (Auth::check())
                 <!-- Opciones del usuario autenticado para pantallas pequeñas -->
@@ -84,20 +87,16 @@
         </div>
     </nav>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Alternar el menú principal en pantallas pequeñas
-            document.getElementById("menu-toggle").onclick = function() {
-                document.getElementById("mobile-menu").classList.toggle("hidden");
-            };
+        // Alternar menú de usuario en pantallas grandes
+        document.getElementById("desktop-user-menu-btn").onclick = function() {
+            document.getElementById("desktop-user-menu").classList.toggle("hidden");
+        };
 
-            // Alternar el menú de usuario en pantallas grandes (si se usa)
-            const desktopUserMenuBtn = document.getElementById("desktop-user-menu-btn");
-            if (desktopUserMenuBtn) {
-                desktopUserMenuBtn.onclick = function() {
-                    document.getElementById("desktop-user-menu").classList.toggle("hidden");
-                };
-            }
-        });
+        // Alternar menú de usuario en pantallas pequeñas
+        document.getElementById("mobile-user-menu-btn").onclick = function() {
+            document.getElementById("mobile-user-menu").classList.toggle("hidden");
+        };
+
         // Alternar menú principal en pantallas pequeñas
         document.getElementById("menu-toggle").onclick = function() {
             document.getElementById("mobile-menu").classList.toggle("hidden");
@@ -118,31 +117,17 @@
     <!-- Barra de búsqueda y carrito -->
     <div class="bg-blue-300 p-2">
         <div class="container mx-auto flex justify-center items-center">
-           <!-- Barra de búsqueda por categoría -->
-<div class="bg-blue-300 p-2">
-    <div class="container mx-auto flex justify-center items-center">
-        <form action="{{ route('searchByCategory') }}" method="GET" class="flex w-full">
-            <select name="query" class="w-full p-2 rounded-l-lg text-gray-900">
-                <option value="1">Fundas</option>
-                <option value="2">Micas</option>
-                <option value="3">Audio</option>
-                <option value="4">Cargadores</option>
-                <option value="5">Cables</option>
-                <!-- Agrega más categorías según tu tabla -->
-            </select>
-            <button 
-                type="submit" 
-                class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 flex items-center justify-center"
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 111.768-1.768L21 21z" />
-                </svg>
-            </button>
-        </form>
-    </div>
-</div>
-
+            <!-- Barra de Búsqueda -->
+            <div class="flex items-center md:w-1/2 lg:w-1/3">
+                <input type="text" placeholder="Buscar productos..." class="w-full p-2 rounded-l-lg text-gray-900" />
+                <button class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 111.768-1.768L21 21z" />
+                    </svg>
+                </button>
+            </div>
 
             <!-- Icono de Carrito -->
             <div class="flex items-center ml-2 relative">
@@ -215,7 +200,7 @@
                                 Continuar Comprando
                             </a>
                         </div>
-
+                        
                     </div>
                 </div>
             </div>
@@ -279,7 +264,8 @@
                     <!-- Producto 1 -->
                     <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
 
-                        <img src="/img/descarga.png" alt="Producto 1" class="mx-auto h-40 object-cover mb-2">
+                        <img src="/img/descarga.png" alt="Producto 1"
+                            class="mx-auto h-40 object-cover mb-2">
                         <h3 class="text-gray-900 font-medium">{{ $product->name }}</h3>
                         <p class="text-gray-500">{{ $product->description }}</p>
                         <p class="text-red-500 font-semibold">${{ $product->price }}</p>

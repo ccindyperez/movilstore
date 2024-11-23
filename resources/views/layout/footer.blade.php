@@ -63,12 +63,12 @@
                 </div>
                 <!-- Más miembros del equipo -->
                 <div class="flex flex-col items-center text-center">
-                    <img src="{{ asset('img/cindy.jpg') }}" alt="Miembro 3" class="w-16 h-16 rounded-full mb-2">
-                    <span class="text-sm text-white">Miembro 3</span>
+                    <img src="{{ asset('img/erika.jfif') }}" alt="Miembro 3" class="w-16 h-16 rounded-full mb-2">
+                    <span class="text-sm text-white">Erika</span>
                 </div>
                 <div class="flex flex-col items-center text-center">
-                    <img src="{{ asset('img/cindy.jpg') }}" alt="Miembro 4" class="w-16 h-16 rounded-full mb-2">
-                    <span class="text-sm text-white">Miembro 4</span>
+                    <img src="{{ asset('img/adrian.jfif') }}" alt="Miembro 4" class="w-16 h-16 rounded-full mb-2">
+                    <span class="text-sm text-white">Adrian</span>
                 </div>
             </div>
         </div>

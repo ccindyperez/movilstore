@@ -29,7 +29,7 @@
                 <!-- Área de usuario autenticado -->
                 <div class="hidden md:flex items-center relative">
                     <button id="desktop-user-menu-btn" class="flex items-center focus:outline-none">
-                        <img src="{{ auth()->user()->avatar_url ?? 'img/iconoUser.png' }}"
+                        <img src="{{ auth()->user()->avatar_url ?? 'https://via.placeholder.com/50' }}"
                             alt="User Avatar" class="w-10 h-10 rounded-full">
                         <span class="text-white ml-2">{{ auth()->user()->name }}</span>
                         <i class="bi bi-chevron-down ml-2 text-white"></i>
@@ -49,10 +49,10 @@
             @else
                 <!-- Botones de Inicio de Sesión y Registro - Usuario no autenticado -->
                 <div class="hidden md:flex space-x-4">
-                    <a href="/singup"
+                    <a href="/login"
                         class="bg-transparent border border-white py-1 px-4 rounded hover:bg-blue-300">Iniciar
                         Sesión</a>
-                    <a href="/singup" class="bg-blue-600 py-1 px-4 rounded hover:bg-blue-700">Registrarse</a>
+                    <a href="/register" class="bg-blue-600 py-1 px-4 rounded hover:bg-blue-700">Registrarse</a>
                 </div>
             @endif
 
@@ -118,30 +118,29 @@
     <!-- Barra de búsqueda y carrito -->
     <div class="bg-blue-300 p-2">
         <div class="container mx-auto flex justify-center items-center">
-           <!-- Barra de búsqueda por categoría -->
-<div class="bg-blue-300 p-2">
-    <div class="container mx-auto flex justify-center items-center">
-        <form action="{{ route('searchByCategory') }}" method="GET" class="flex w-full">
-            <select name="query" class="w-full p-2 rounded-l-lg text-gray-900">
-                <option value="1">Fundas</option>
-                <option value="2">Micas</option>
-                <option value="3">Audio</option>
-                <option value="4">Cargadores</option>
-                <option value="5">Cables</option>
-                <!-- Agrega más categorías según tu tabla -->
-            </select>
-            <button 
-                type="submit" 
-                class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 flex items-center justify-center"
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 111.768-1.768L21 21z" />
-                </svg>
-            </button>
-        </form>
-    </div>
-</div>
+            <!-- Barra de búsqueda por categoría -->
+            <div class="bg-blue-300 p-2">
+                <div class="container mx-auto flex justify-center items-center">
+                    <form action="{{ route('searchByCategory') }}" method="GET" class="flex w-full">
+                        <select name="query" class="w-full p-2 rounded-l-lg text-gray-900">
+                            <option value="1">Fundas</option>
+                            <option value="2">Micas</option>
+                            <option value="3">Audio</option>
+                            <option value="4">Cargadores</option>
+                            <option value="5">Cables</option>
+                            <!-- Agrega más categorías según tu tabla -->
+                        </select>
+                        <button type="submit"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 111.768-1.768L21 21z" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
 
 
             <!-- Icono de Carrito -->
@@ -274,26 +273,52 @@
         <!-- Contenedor de Productos con Scroll Vertical -->
         <div class="mt-4 h-96 overflow-y-scroll border rounded-lg p-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Producto 1 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
 
-                @foreach ($products as $product)
-                    <!-- Producto 1 -->
-                    <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
+                    <img src="/img/descarga.png" alt="Producto 1" class="mx-auto h-40 object-cover mb-2">
+                    <h3 class="text-gray-900 font-medium">Funda de goma</h3>
+                    <p class="text-gray-500">para iphone</p>
+                    <p class="text-red-500 font-semibold">$400</p>
+                    <form action="{{ route('add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="id">
+                        <input type="submit" name="btn"
+                            class="mt-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+                            value="Comprar Ahora">
+                    </form>
+                </div>
 
-                        <img src="/img/descarga.png" alt="Producto 1" class="mx-auto h-40 object-cover mb-2">
-                        <h3 class="text-gray-900 font-medium">{{ $product->name }}</h3>
-                        <p class="text-gray-500">{{ $product->description }}</p>
-                        <p class="text-red-500 font-semibold">${{ $product->price }}</p>
-                        <form action="{{ route('add') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="id" value="{{ $product->id }}">
-                            <input type="submit" name="btn"
-                                class="mt-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
-                                value="Comprar Ahora">
-                        </form>
-                    </div>
-                @endforeach
+                <!-- Producto 1 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
 
+                    <img src="/img/descarga.png" alt="Producto 1" class="mx-auto h-40 object-cover mb-2">
+                    <h3 class="text-gray-900 font-medium">Cargador de samsung</h3>
+                    <p class="text-gray-500">samsung</p>
+                    <p class="text-red-500 font-semibold">$300</p>
+                    <form action="{{ route('add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="id">
+                        <input type="submit" name="btn"
+                            class="mt-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+                            value="Comprar Ahora">
+                    </form>
+                </div>
+                <!-- Producto 1 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
 
+                    <img src="/img/descarga.png" alt="Producto 1" class="mx-auto h-40 object-cover mb-2">
+                    <h3 class="text-gray-900 font-medium">Funda de plastico</h3>
+                    <p class="text-gray-500">para xiaomy</p>
+                    <p class="text-red-500 font-semibold">$200</p>
+                    <form action="{{ route('add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="id">
+                        <input type="submit" name="btn"
+                            class="mt-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+                            value="Comprar Ahora">
+                    </form>
+                </div>
             </div>
         </div>
     </main>

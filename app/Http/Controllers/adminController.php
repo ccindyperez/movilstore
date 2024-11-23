@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\shopping;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class adminController extends Controller
 {
     public function index()
     {
-        return view('auth.dashboard');
+        $user = Auth::user(); // Obtén el usuario autenticado
+        return view('auth.dashboard', compact('user'));
     }
 
     public function users()
@@ -68,15 +70,18 @@ class adminController extends Controller
     public function verShop()
     {
         $shopping = shopping::all();
-        return view('auth.calendar',compact('shopping'));
+        return view('auth.calendar', compact('shopping'));
     }
 
-    public function EliminarShop(Request $request){
+    public function EliminarShop(Request $request)
+    {
         $shop = shopping::find($request->id);
         return view('auth.shopping.delete', compact('shop'));
     }
-    public function destroyShop(shopping $shop) {
+    public function destroyShop(shopping $shop)
+    {
         $shop->delete();
         return redirect(url('/auth/calendar'))->with('success', 'Venta eliminada...');
     }
+
 }
