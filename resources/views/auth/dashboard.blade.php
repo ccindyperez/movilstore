@@ -33,7 +33,7 @@
             <!-- Imagen de perfil -->
             <div class="flex justify-center mb-4">
                 <label for="profileImage" class="cursor-pointer">
-                    <img id="profileImagePreview" src="https://source.unsplash.com/uJ8LNVCBjFQ/400x400" alt="Imagen de perfil"
+                    <img id="profileImagePreview" src="/img/cindy.jpg" alt="Imagen de perfil"
                         class="w-32 h-32 rounded-full object-cover border-4 border-gray-300">
                     <input type="file" id="profileImage" class="hidden" accept="image/*" onchange="previewImage(event)">
                 </label>

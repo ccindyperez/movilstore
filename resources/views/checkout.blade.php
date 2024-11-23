@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="{{ asset('img/LOGO-P.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Chekout</title>
 </head>
 
@@ -26,27 +27,27 @@
             </div>
 
             @if (Auth::check())
-            <!-- Área de usuario autenticado -->
-            <div class="hidden md:flex items-center relative">
-                <button id="desktop-user-menu-btn" class="flex items-center focus:outline-none">
-                    <img src="{{ auth()->user()->avatar_url ?? 'https://via.placeholder.com/50' }}"
-                        alt="User Avatar" class="w-10 h-10 rounded-full">
-                    <span class="text-white ml-2">{{ auth()->user()->name }}</span>
-                    <i class="bi bi-chevron-down ml-2 text-white"></i>
-                </button>
+                <!-- Área de usuario autenticado -->
+                <div class="hidden md:flex items-center relative">
+                    <button id="desktop-user-menu-btn" class="flex items-center focus:outline-none">
+                        <img src="{{ auth()->user()->avatar_url ?? 'https://via.placeholder.com/50' }}"
+                            alt="User Avatar" class="w-10 h-10 rounded-full">
+                        <span class="text-white ml-2">{{ auth()->user()->name }}</span>
+                        <i class="bi bi-chevron-down ml-2 text-white"></i>
+                    </button>
 
-                <div id="desktop-user-menu"
-                    class="hidden absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
-                    <!-- <a href="" class="block px-4 py-2 hover:bg-gray-100">Editar Perfil</a>
+                    <div id="desktop-user-menu"
+                        class="hidden absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
+                        <!-- <a href="" class="block px-4 py-2 hover:bg-gray-100">Editar Perfil</a>
                     <a href="" class="block px-4 py-2 hover:bg-gray-100">Mis Pedidos</a>-->
-                    <form action="{{ route('logout') }}" method="POST" class="inline">
-                        @csrf
-                        <button type="submit" class="block px-4 py-2 w-full text-left hover:bg-gray-100">Cerrar
-                            Sesión</button>
-                    </form>
+                        <form action="{{ route('logout') }}" method="POST" class="inline">
+                            @csrf
+                            <button type="submit" class="block px-4 py-2 w-full text-left hover:bg-gray-100">Cerrar
+                                Sesión</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        @else
+            @else
                 <!-- Botones de Inicio de Sesión y Registro - Usuario no autenticado -->
                 <div class="hidden md:flex space-x-4">
                     <a href="/singup"
@@ -130,6 +131,7 @@
                                 <th class="py-3 px-6 text-left">Cantidad</th>
                                 <th class="py-3 px-6 text-left">Precio</th>
                                 <th class="py-3 px-6 text-left">Importe</th>
+                                <th class="py-3 px-6 text-left">Accion</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -169,9 +171,11 @@
                                         <form action="{{ route('removeItem') }}" method="post">
                                             @csrf
                                             <input type="hidden" name="rowId" value="{{ $product->rowId }}">
-                                            <input type="submit" name="btn"
-                                                class="mt-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
-                                                value="Borrar">
+                                            <button type="submit" name="btn"
+                                                class="mt-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 flex items-center justify-center">
+                                                <i class="fas fa-trash"></i>
+                                                <span class="sr-only">Borrar</span>
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
@@ -198,10 +202,10 @@
                 @else
                     <p class="text-red-500">Debes iniciar sesión para completar la compra.</p>
                 @endif
-
-                <!-- Campo para el ID del Producto -->
-                <input type="hidden" name="keyproduct" value="{{ $product->id }}">
-
+                @foreach (Cart::content() as $product)
+                    <!-- Campo para el ID del Producto -->
+                    <input type="hidden" name="keyproduct" value="{{ $product->id }}">
+                @endforeach
                 <!-- Campo para la Fecha de Compra -->
                 <input type="hidden" name="datebuy" value="{{ now() }}">
 
@@ -228,86 +232,91 @@
                 </div>
 
                 <!-- Botón de Enviar -->
-                <button 
-                id="guardarPedidoBtn"
-                class="bg-indigo-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-indigo-700">
-                Guardar Pedido
-            </button>
+                <button id="guardarPedidoBtn"
+                    class="bg-indigo-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-indigo-700">
+                    Guardar Pedido
+                </button>
             </form>
         </div>
     </div>
 
-    <div id="modalConfirmacion" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden justify-center items-center">
-        <div class="bg-white rounded-lg p-6 w-full max-w-lg relative">
+    <!-- Modal de Confirmación -->
+    <!-- Modal de Confirmación -->
+    <div id="modalConfirmacion"
+        class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden flex justify-center items-center z-50">
+        <div class="bg-white rounded-lg p-6 w-full max-w-lg relative shadow-lg">
             <h2 class="text-xl font-bold mb-4">¡Tu Pedido Ha Sido Registrado!</h2>
             <p class="mb-4">Gracias por tu compra. ¿Deseas generar el recibo en PDF?</p>
-    
+
             <!-- Botón para generar PDF -->
-            <form id="formGenerarPDF" action="{{ route('generar.recibo') }}" method="POST">
+            <form id="formGenerarPdf" action="{{ route('generarRecibo') }}" method="POST" class="space-y-4">
                 @csrf
                 <input type="hidden" name="username" value="{{ auth()->user()->id }}">
-                <input type="hidden" name="keyproduct" value="{{ $product->id }}">
+                @foreach (Cart::content() as $product)
+                    <input type="hidden" name="productos[{{ $loop->index }}][keyproduct]"
+                        value="{{ $product->id }}">
+                    <input type="hidden" name="productos[{{ $loop->index }}][name]" value="{{ $product->name }}">
+                    <input type="hidden" name="productos[{{ $loop->index }}][qty]" value="{{ $product->qty }}">
+                    <input type="hidden" name="productos[{{ $loop->index }}][price]"
+                        value="{{ $product->price }}">
+                @endforeach
                 <input type="hidden" name="datebuy" value="{{ now() }}">
                 <input type="hidden" name="subtotal" value="{{ Cart::subtotal() }}">
                 <input type="hidden" name="total" value="{{ Cart::total() }}">
-    
-                <div class="flex justify-end space-x-4 mb-4">
-                    <!-- Botón para generar PDF -->
-                    <button type="submit" class="bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700">
-                        Generar Recibo
-                    </button>
-                </div>
+
+                <button type="submit"
+                    class="bg-indigo-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-indigo-700">
+                    Generar PDF
+                </button>
             </form>
-    
+
             <!-- Botón de cerrar el modal -->
-            <button type="button" onclick="closeModal()" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button type="button" onclick="closeModal()"
+                class="absolute top-2 right-2 text-gray-600 hover:text-gray-800">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
     </div>
-    
+
+
     <script>
-        // Función para abrir el modal
-        function openModal() {
-            document.getElementById('modalConfirmacion').classList.remove('hidden');
-            document.getElementById('modalConfirmacion').classList.add('flex');
-        }
-    
-        // Función para cerrar el modal
+        document.getElementById('guardarPedidoBtn').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const form = document.querySelector('form[action="{{ route('guardarPedido') }}"]');
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // Mostrar el modal
+                        document.getElementById('modalConfirmacion').classList.remove('hidden');
+                    } else {
+                        alert('Ocurrió un error al guardar el pedido. Intenta de nuevo.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Hubo un problema con la solicitud.');
+                });
+        });
+
         function closeModal() {
             document.getElementById('modalConfirmacion').classList.add('hidden');
-            document.getElementById('modalConfirmacion').classList.remove('flex');
         }
-    
-        // Escuchar el clic en el botón "Guardar Pedido"
-        document.getElementById('guardarPedidoBtn').addEventListener('click', function(event) {
-            event.preventDefault(); // Evitar que recargue la página
-    
-            // Realizar el envío del formulario de pedido con AJAX
-            var formData = new FormData();
-            formData.append('username', '{{ auth()->user()->id }}');
-            formData.append('keyproduct', '{{ $product->id }}');
-            formData.append('datebuy', '{{ now() }}');
-            formData.append('subtotal', '{{ Cart::subtotal() }}');
-            formData.append('total', '{{ Cart::total() }}');
-            formData.append('_token', '{{ csrf_token() }}');
-    
-            fetch("{{ route('guardarPedido') }}", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.json()) // Espera la respuesta JSON
-            .then(data => {
-                // Mostrar el modal de confirmación
-                if (data.status === 'success') {
-                    openModal();
-                }
-            })
-            .catch(error => console.error('Error al guardar el pedido:', error));
-        });
-    </script>    
+    </script>
+
+
 </body>
 
 @include('layout.footer')

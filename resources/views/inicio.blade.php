@@ -23,7 +23,7 @@
             <div class="flex justify-center space-x-6">
                 <a href="{{ route('dashboard') }}" class="hover:text-gray-300">Inicio</a>
                 <a href="#" class="hover:text-gray-300">Características</a>
-                <a href="#" class="hover:text-gray-300">Contacto</a>
+                <a href="#contacto" class="hover:text-gray-300">Contacto</a>
             </div>
 
             <!-- Condición de Autenticación -->
@@ -70,9 +70,9 @@
 
         <!-- Menú Colapsable para Pantallas Pequeñas -->
         <div id="mobile-menu" class="hidden md:hidden flex flex-col items-center mt-4 space-y-4">
-            <a href="#" class="hover:text-gray-300">Inicio</a>
+            <a href="{{ route('dashboard') }}" class="hover:text-gray-300" class="hover:text-gray-300">Inicio</a>
             <a href="#" class="hover:text-gray-300">Características</a>
-            <a href="#" class="hover:text-gray-300">Contacto</a>
+            <a href="#contacto" class="hover:text-gray-300">Contacto</a>
             @if (Auth::check())
                 <!-- Opciones del usuario autenticado para pantallas pequeñas -->
                 <!-- <a href="" class="block px-4 py-2 hover:bg-gray-100">Editar Perfil</a>
@@ -264,7 +264,7 @@
                     <!-- Producto 1 -->
                     <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
 
-                        <img src="https://via.placeholder.com/150" alt="Producto 1"
+                        <img src="/img/descarga.png" alt="Producto 1"
                             class="mx-auto h-40 object-cover mb-2">
                         <h3 class="text-gray-900 font-medium">{{ $product->name }}</h3>
                         <p class="text-gray-500">{{ $product->description }}</p>

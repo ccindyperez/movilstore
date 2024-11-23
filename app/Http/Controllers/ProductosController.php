@@ -75,7 +75,7 @@ class ProductosController extends Controller
     public function destroy(product $product)
     {
         $product->delete();
-        return redirect(url('/auth/tables'))->with('success', 'Producto actualizado correctamente');
+        return redirect(url('/auth/tables'))->with('success', 'Producto Eliminado');
     }
 
     public function show()

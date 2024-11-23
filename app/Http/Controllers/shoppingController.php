@@ -4,13 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\product;
 use App\Models\shopping;
+use App\Models\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
 use Picqer\Barcode\BarcodeGeneratorHTML;
 
 class shoppingController extends Controller
 {
+    public function index()
+{
+    // Obtén el usuario autenticado
+    $user = Auth::user();
+
+    // Filtra los productos del carrito por user_id
+    $cartItems = \App\Models\Shopping::where('username', $user->id)
+                ->with('product') // Asegúrate de que `product` sea una relación en tu modelo Shopping
+                ->get();
+
+    return view('cart.index', compact('cartItems'));
+}
+
+
     public function add(Request $request)
     {
         $products = product::find($request->id);
@@ -86,21 +102,29 @@ class shoppingController extends Controller
 
     public function generarRecibo(Request $request)
     {
-        // Recuperar los datos del pedido
+        // Validar que productos sea un array y tenga al menos un elemento
+        $productos = $request->productos ?? [];
+
+        // Obtener el nombre del usuario usando la relación de la clave foránea 'username'
+        $usuario = User::find($request->username); // Suponiendo que 'username' es el ID del usuario
+
+        // Crear el array de datos del pedido
         $pedido = [
-            'username' => $request->username,
-            'datebuy' => $request->datebuy,
-            'subtotal' => $request->subtotal,
-            'total' => $request->total,
-            'productos' => $request->productos, // Array de productos enviado desde el formulario
+            'username' => $usuario ? $usuario->name : 'Usuario desconocido', // Nombre del usuario
+            'datebuy' => $request->datebuy,     // Fecha de la compra
+            'subtotal' => $request->subtotal,   // Subtotal
+            'total' => $request->total,         // Total
+            'productos' => $productos,          // Array de productos
         ];
 
-        // Generar código de barras basado en un identificador único, por ejemplo, el primer producto o un pedido ID
+        // Generar código de barras
+        $keyproduct = isset($productos[0]['keyproduct']) ? $productos[0]['keyproduct'] : '000000';
         $generator = new BarcodeGeneratorHTML();
-        $codigoBarras = $generator->getBarcode($pedido['productos'][0]['keyproduct'] ?? '000000', $generator::TYPE_CODE_128);
+        $codigoBarras = $generator->getBarcode($keyproduct, $generator::TYPE_CODE_128);
 
         // Generar el PDF con DomPDF
         $pdf = Pdf::loadView('pdf.recibo', compact('pedido', 'codigoBarras'));
+
         // Descargar el PDF
         return $pdf->download('recibo.pdf');
     }

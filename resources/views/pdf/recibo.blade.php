@@ -12,7 +12,7 @@
             padding: 0;
             background-color: #f4f4f4;
         }
-        
+
         .container {
             max-width: 800px;
             margin: 30px auto;
@@ -27,7 +27,7 @@
             margin-bottom: 30px;
             color: #2a2a2a;
         }
-        
+
         .header h1 {
             margin: 0;
             font-size: 36px;
@@ -50,7 +50,8 @@
             margin-bottom: 20px;
         }
 
-        .table th, .table td {
+        .table th,
+        .table td {
             padding: 10px;
             text-align: left;
             border: 1px solid #ddd;
@@ -94,51 +95,66 @@
 
 <body>
     <div class="container"><br>
-        <img src="img/LOGO-P.png" width="100px" alt="">
-        <!-- Header -->
+        <!-- Logo de la empresa -->
+        <img src="img/LOGO-P.png" width="100px" alt="Logo de la Empresa">
+        
+        <!-- Encabezado del recibo -->
         <div class="header">
             <h1>Recibo de Compra</h1>
             <p>¡Gracias por tu compra! Aquí tienes el detalle de tu pedido.</p>
         </div>
 
-        <!-- Order Details -->
+        <!-- Detalles del pedido -->
         <div class="content">
             <table class="table">
-                <tr>
-                    <th>Producto</th>
-                    <td>{{ $pedido['keyproduct'] }}</td>
-                </tr>
-                <tr>
-                    <th>Usuario</th>
-                    <td>{{ $pedido['username'] }}</td>
-                </tr>
-                <tr>
-                    <th>Fecha de Compra</th>
-                    <td>{{ $pedido['datebuy'] }}</td>
-                </tr>
-                <tr>
-                    <th>Subtotal</th>
-                    <td>${{ number_format($pedido['subtotal'], 2) }}</td>
-                </tr>
-                <tr class="total-row">
-                    <th>Total</th>
-                    <td>${{ number_format($pedido['total'], 2) }}</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Recorrer los productos -->
+                    @foreach ($pedido['productos'] as $producto)
+                    <tr>
+                        <td>{{ $producto['name'] }}</td>
+                        <td>{{ $producto['quantity'] ?? '1' }}</td> <!-- Si tienes cantidad -->
+                        <td>${{ number_format($producto['price'], 2) }}</td> <!-- Si tienes precio -->
+                    </tr>
+                    @endforeach
+                    <!-- Detalles adicionales -->
+                    <tr>
+                        <th>Usuario</th>
+                        <td>{{ $pedido['username'] ?? 'N/A' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fecha de Compra</th>
+                        <td>{{ $pedido['datebuy'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Subtotal</th>
+                        <td>${{ number_format($pedido['subtotal'], 2) }}</td>
+                    </tr>
+                    <tr class="total-row">
+                        <th>Total</th>
+                        <td>${{ number_format($pedido['total'], 2) }}</td>
+                    </tr>
+                </tbody>
             </table>
 
-            <!-- Barcode -->
+            <!-- Código de barras -->
             <div class="barcode">
-                <h3>Tu compra sera entregada en la sucursal</h3>
+                <h3>Tu compra será entregada en la sucursal</h3>
                 <h3>Código de Barras para Pago</h3>
                 {!! $codigoBarras !!}
             </div>
         </div>
 
-        <!-- Footer -->
+        <!-- Pie de página -->
         <div class="footer">
             <p>Recibo generado el {{ now()->format('d/m/Y H:i') }}</p>
             <p>¡Gracias por confiar en nosotros! Si tienes alguna duda, contáctanos.</p>
-            <p></p>
         </div>
     </div>
 </body>

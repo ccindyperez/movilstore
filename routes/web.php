@@ -8,27 +8,6 @@ use App\Http\Controllers\UserControllers;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/layout', function () {
-    return view('layout');
-});
-
-
-Route::get('/singin', function () {
-    return view('login');
-});
-
-Route::get('/singup', function () {
-    return view('loginout');
-});
-
-Route::get('/iniciosesion', function () {
-    return view('/loginUser/login');
-});
-
-//Route::get('/registro', function () {
-//    return view('/loginUser/registry');
-//});
-
 Route::get('/register', [UserControllers::class, 'showForm'])->name('register.form');
 Route::post('/register', [UserControllers::class, 'crear'])->name('register.create');
 Route::get('/login', [UserControllers::class, 'showLoginForm'])->name('loginUser.login'); // Mostrar el formulario de login
@@ -53,26 +32,26 @@ Route::post('shopping/increaseQuantity', [shoppingController::class, 'increaseQu
 Route::post('shopping/decreaseQuantity', [shoppingController::class, 'decreaseQuantity'])->name('decreaseQuantity');
 // web.php
 Route::post('/guardarPedido', [shoppingController::class, 'guardarPedido'])->name('guardarPedido');
-Route::post('/generar-recibo', [shoppingController::class, 'generarRecibo'])->name('generar.recibo');
+Route::post('/generar-recibo', [shoppingController::class, 'generarRecibo'])->name('generarRecibo');
 
-
-
-
-Route::get('/checkout', function () {
-    return view('checkout');
-});
 
 Route::get('/auth/dashboard', [adminController::class, 'index'])->middleware('auth.admin')->name('admin.index');
 
+Route::get('/auth/user', [adminController::class, 'users'])->middleware('auth.admin')->name('admin.users');
+Route::get('/user/crear', [adminController::class, 'createU'])->middleware('auth.admin')->name('admin.crear');
+Route::post('/user/crearN', [adminController::class, 'store'])->middleware('auth.admin')->name('admin.store');
+Route::get('/auth/forms/{id}/edit', [adminController::class, 'edit'])->middleware('auth.admin')->name('admin.edit');
+Route::put('/auth/forms/{id}/update', [adminController::class, 'update'])->middleware('auth.admin')->name('admin.update');
+Route::get('/auth/forms/{id}/eliminar', [adminController::class, 'eliminar'])->middleware('auth.admin')->name('admin.eliminar');
+Route::delete('/auth/forms/{usuario}/delete', [adminController::class, 'destroy'])->middleware('auth.admin')->name('admin.destroy');
+
+
+Route::get('/auth/calendar', [adminController::class, 'verShop'])->middleware('auth.admin')->name('admin.shopping');
+Route::get('/auth/shopping/{id}/eliminar', [adminController::class, 'EliminarShop'])->middleware('auth.admin')->name('admin.shopElim');
+Route::delete('/auth/shopping/{shop}/destroy', [adminController::class, 'destroyShop'])->middleware('auth.admin')->name('admin.shopDes');
 
 Route::get('/auth/forms', function () {
     return view('/auth/forms');
-});
-
-
-
-Route::get('/auth/calendar', function () {
-    return view('/auth/calendar');
 });
 
 Route::get('/auth/index', function () {
