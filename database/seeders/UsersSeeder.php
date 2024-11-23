@@ -16,17 +16,25 @@ class UsersSeeder extends Seeder
     {
         User::insert([
             [
-                'name' => 'Cindy Juleidy',
-                'email' => 'cindy@gmail.com',
-                'password' => Hash::make('123456789@'), // Encripta la contraseña
+                'name' => 'Cindy Juleidy Rodriguez Peres',
+                'email' => 'Cindy@gmail.com',
+                'password' => Hash::make('123456789'), // Encripta la contraseña
                 'role' => 'admin', // Cambia a 'admin' o 'user' según corresponda
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name' => 'Jose Alberto',
+                'name' => 'Abnier Perez Cano',
+                'email' => 'abnier19@gmail.com',
+                'password' => Hash::make('123456789'), // Encripta la contraseña
+                'role' => 'admin', // Cambia a 'admin' o 'user' según corresponda
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Jose Alberto Martinez Vazquez',
                 'email' => 'albertomart420@gmail.com',
-                'password' => Hash::make('123456789@'), // Encripta la contraseña
+                'password' => Hash::make('123456789'), // Encripta la contraseña
                 'role' => 'user', // Cambia a 'admin' o 'user' según corresponda
                 'created_at' => now(),
                 'updated_at' => now(),
