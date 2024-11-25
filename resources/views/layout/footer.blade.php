@@ -52,22 +52,23 @@
             <div class="flex flex-wrap justify-center gap-6 items-center pb-4">
                 <!-- Miembro del Equipo -->
                 <div class="flex flex-col items-center text-center">
+                    <img src="{{ asset('img/erika.jfif') }}" alt="Miembro 3" class="w-16 h-16 rounded-full mb-2">
+                    <span class="text-sm text-white">Desarrollador 1</span>
+                </div>
+                <!-- Miembro del Equipo -->
+                <div class="flex flex-col items-center text-center">
                     <img src="{{ asset('img/cindy.jpg') }}" alt="Miembro 1" class="w-16 h-16 rounded-full mb-2">
-                    <span class="text-sm text-white">Cindy</span>
+                    <span class="text-sm text-white">Desarrollador 2</span>
                 </div>
                 <!-- Miembro del Equipo -->
                 <div class="flex flex-col items-center text-center">
                     <img src="{{ asset('img/abnier.jfif') }}" alt="Miembro 2" class="w-16 h-16 rounded-full mb-2">
-                    <span class="text-sm text-white">Abnier</span>
+                    <span class="text-sm text-white">Desarrollador 3</span>
                 </div>
                 <!-- Más miembros del equipo -->
                 <div class="flex flex-col items-center text-center">
-                    <img src="{{ asset('img/erika.jfif') }}" alt="Miembro 3" class="w-16 h-16 rounded-full mb-2">
-                    <span class="text-sm text-white">Erika</span>
-                </div>
-                <div class="flex flex-col items-center text-center">
                     <img src="{{ asset('img/adrian.jfif') }}" alt="Miembro 4" class="w-16 h-16 rounded-full mb-2">
-                    <span class="text-sm text-white">Adrian</span>
+                    <span class="text-sm text-white">Desarrollador 4</span>
                 </div>
             </div>
         </div>

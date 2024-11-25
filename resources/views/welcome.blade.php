@@ -174,7 +174,7 @@
                                 @foreach (Cart::content() as $product)
                                     <li class="flex items-center justify-between border-b border-gray-200 pb-4">
                                         <!-- Imagen del producto -->
-                                        <img src="https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-01.jpg"
+                                        <img src="img/descarga.png"
                                             class="h-16 w-16 rounded-md border border-gray-200" alt="Producto">
 
                                         <!-- Detalles del producto -->

@@ -29,9 +29,8 @@
                 <!-- Área de usuario autenticado -->
                 <div class="hidden md:flex items-center relative">
                     <button id="desktop-user-menu-btn" class="flex items-center focus:outline-none">
-                        <img src="{{ auth()->user()->avatar_url ?? 'img/iconoUser.png' }}"
-                            alt="User Avatar" class="w-10 h-10 rounded-full">
-                        <span class="text-white ml-2">{{ auth()->user()->name }}</span>
+                        <img src="{{ auth()->user()->avatar_url ?? 'img/iconoUser.png' }}" alt="User Avatar"
+                            class="w-10 h-10 rounded-full">
                         <i class="bi bi-chevron-down ml-2 text-white"></i>
                     </button>
 
@@ -39,11 +38,35 @@
                         class="hidden absolute right-0 mt-2 w-48 bg-white text-black rounded shadow-lg">
                         <!-- <a href="" class="block px-4 py-2 hover:bg-gray-100">Editar Perfil</a>
                     <a href="" class="block px-4 py-2 hover:bg-gray-100">Mis Pedidos</a>-->
-                        <form action="{{ route('logout') }}" method="POST" class="inline">
-                            @csrf
-                            <button type="submit" class="block px-4 py-2 w-full text-left hover:bg-gray-100">Cerrar
-                                Sesión</button>
-                        </form>
+                        <div
+                            class="flex flex-wrap items-center justify-between bg-white p-4 rounded-lg shadow-lg max-w-full">
+                            <!-- Información del Usuario -->
+                            @auth
+                                <div class="flex items-center space-x-2">
+                                    <!-- Ícono de Usuario -->
+                                    <span class="text-blue-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5.121 17.804A5 5 0 0112 14a5 5 0 016.879 3.804M15 10a3 3 0 11-6 0 3 3 0 016 0zM12 14v6m0 0H6m6 0h6" />
+                                        </svg>
+                                    </span>
+                                    <!-- Nombre del Usuario -->
+                                    <div class="text-gray-800">
+                                        <p class="font-semibold text-sm leading-tight">{{ auth()->user()->name }}</p>
+                                    </div>
+                                </div>
+                            @endauth
+
+                            <!-- Botón de Cerrar Sesión -->
+                            <form action="{{ route('logout') }}" method="POST" class="mt-2 sm:mt-0 sm:ml-4">
+                                @csrf
+                                <button type="submit"
+                                    class="px-3 py-1 bg-red-500 text-white text-sm font-medium rounded-lg shadow hover:bg-red-600 transition w-full sm:w-auto">
+                                    Cerrar Sesión
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             @else
@@ -74,6 +97,7 @@
                 <!-- Opciones del usuario autenticado para pantallas pequeñas -->
                 <!-- <a href="" class="block px-4 py-2 hover:bg-gray-100">Editar Perfil</a>
                 <a href="" class="block px-4 py-2 hover:bg-gray-100">Mis Pedidos</a>-->
+                <span class="text-black ml-2">{{ auth()->user()->name }}</span>
                 <a href="{{ route('logout') }}" class="block px-4 py-2 hover:bg-gray-100">Cerrar Sesión</a>
             @else
                 <!-- Botones de registro e inicio de sesión para pantallas pequeñas -->
@@ -118,30 +142,29 @@
     <!-- Barra de búsqueda y carrito -->
     <div class="bg-blue-300 p-2">
         <div class="container mx-auto flex justify-center items-center">
-           <!-- Barra de búsqueda por categoría -->
-<div class="bg-blue-300 p-2">
-    <div class="container mx-auto flex justify-center items-center">
-        <form action="{{ route('searchByCategory') }}" method="GET" class="flex w-full">
-            <select name="query" class="w-full p-2 rounded-l-lg text-gray-900">
-                <option value="1">Fundas</option>
-                <option value="2">Micas</option>
-                <option value="3">Audio</option>
-                <option value="4">Cargadores</option>
-                <option value="5">Cables</option>
-                <!-- Agrega más categorías según tu tabla -->
-            </select>
-            <button 
-                type="submit" 
-                class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 flex items-center justify-center"
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 111.768-1.768L21 21z" />
-                </svg>
-            </button>
-        </form>
-    </div>
-</div>
+            <!-- Barra de búsqueda por categoría -->
+            <div class="bg-blue-300 p-2">
+                <div class="container mx-auto flex justify-center items-center">
+                    <form action="{{ route('searchByCategory') }}" method="GET" class="flex w-full">
+                        <select name="query" class="w-full p-2 rounded-l-lg text-gray-900">
+                            <option value="1">Fundas</option>
+                            <option value="2">Micas</option>
+                            <option value="3">Audio</option>
+                            <option value="4">Cargadores</option>
+                            <option value="5">Cables</option>
+                            <!-- Agrega más categorías según tu tabla -->
+                        </select>
+                        <button type="submit"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 111.768-1.768L21 21z" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
 
 
             <!-- Icono de Carrito -->
@@ -175,7 +198,7 @@
                                 @foreach (Cart::content() as $product)
                                     <li class="flex items-center justify-between border-b border-gray-200 pb-4">
                                         <!-- Imagen del producto -->
-                                        <img src="https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-04-product-01.jpg"
+                                        <img src="img/descarga.png"
                                             class="h-16 w-16 rounded-md border border-gray-200" alt="Producto">
 
                                         <!-- Detalles del producto -->
