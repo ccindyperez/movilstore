@@ -47,7 +47,6 @@
         </div>
 
         <!-- Sección del Equipo de Desarrollo -->
-        <!-- Sección del Equipo de Desarrollo -->
         <div class="text-center">
             <h3 class="text-lg font-semibold text-white mb-4">Equipo de Desarrollo</h3>
             <div class="flex flex-wrap justify-center gap-6 items-center pb-4">
@@ -59,7 +58,7 @@
                 <!-- Miembro del Equipo -->
                 <div class="flex flex-col items-center text-center">
                     <img src="{{ asset('img/abnier.jfif') }}" alt="Miembro 2" class="w-16 h-16 rounded-full mb-2">
-                    <span class="text-sm text-white">Ing Abnier</span>
+                    <span class="text-sm text-white">Abnier</span>
                 </div>
                 <!-- Más miembros del equipo -->
                 <div class="flex flex-col items-center text-center">
