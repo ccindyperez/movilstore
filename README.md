@@ -164,16 +164,13 @@ Dashboard
 
 El texto de la página web está escrito en español, sus clases y atributos personalizados en ingles.
 
-##Instalaciones
-Se necesta el archivo Vendor, para ello ejecuta en la terminal
-
-##Bash
-composer install
+## Instalaciones
+Se necesta el archivo Vendor, para ello ejecuta en la terminal `composer install`
 Despues se necesita crear el archivo `.env`, para ello se necesita crear en la carpata raíz y copiar el contenido de `.env.example`
 Luego se necesitara crear la `APP_KEY`, para ello ejecuta en la terminal `php artisan key:generate`.
 En caso de que comando `npm run dev` Te mande : "vite" no se reconoce como un comando interno o externo, programa o archivo por lotes ejecutable. Ejecuta el comando `npm install` y `npm run dev`
 
 ## Usage
 python
-# Ejecutar aplicación
+## Ejecutar aplicación
 npm run dev
