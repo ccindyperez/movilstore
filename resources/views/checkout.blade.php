@@ -30,7 +30,7 @@
                 <!-- Área de usuario autenticado -->
                 <div class="hidden md:flex items-center relative">
                     <button id="desktop-user-menu-btn" class="flex items-center focus:outline-none">
-                        <img src="{{ auth()->user()->avatar_url ?? '/img/iconoUser.png' }}" alt="User Avatar"
+                        <img src="{{ auth()->user()->avatar_url ?? 'img/iconoUser.png' }}" alt="User Avatar"
                             class="w-10 h-10 rounded-full">
                         <i class="bi bi-chevron-down ml-2 text-white"></i>
                     </button>
@@ -92,7 +92,7 @@
 
         <!-- Menú Colapsable para Pantallas Pequeñas -->
         <div id="mobile-menu" class="hidden md:hidden flex flex-col items-center mt-4 space-y-4">
-            <a href="/Inicio" class="hover:text-gray-300">Inicio</a>
+            <a href="Inicio" class="hover:text-gray-300">Inicio</a>
             <a href="#contacto" class="hover:text-gray-300">Contacto</a>
             @if (Auth::check())
                 <!-- Opciones del usuario autenticado para pantallas pequeñas

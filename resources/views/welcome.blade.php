@@ -49,10 +49,10 @@
             @else
                 <!-- Botones de Inicio de Sesión y Registro - Usuario no autenticado -->
                 <div class="hidden md:flex space-x-4">
-                    <a href="/login"
+                    <a href="login"
                         class="bg-transparent border border-white py-1 px-4 rounded hover:bg-blue-300">Iniciar
                         Sesión</a>
-                    <a href="/register" class="bg-blue-600 py-1 px-4 rounded hover:bg-blue-700">Registrarse</a>
+                    <a href="register" class="bg-blue-600 py-1 px-4 rounded hover:bg-blue-700">Registrarse</a>
                 </div>
             @endif
 
@@ -77,9 +77,9 @@
                 <a href="{{ route('logout') }}" class="block px-4 py-2 hover:bg-gray-100">Cerrar Sesión</a>
             @else
                 <!-- Botones de registro e inicio de sesión para pantallas pequeñas -->
-                <a href="/singup" class="bg-transparent border border-white py-1 px-4 rounded hover:bg-gray-700">Iniciar
+                <a href="login" class="bg-transparent border border-white py-1 px-4 rounded hover:bg-gray-700">Iniciar
                     Sesión</a>
-                <a href="/singup" class="bg-blue-600 py-1 px-4 rounded hover:bg-blue-700">Registrarse</a>
+                <a href="register" class="bg-blue-600 py-1 px-4 rounded hover:bg-blue-700">Registrarse</a>
             @endif
         </div>
     </nav>
@@ -276,7 +276,7 @@
                 <!-- Producto 1 -->
                 <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
 
-                    <img src="/img/descarga.png" alt="Producto 1" class="mx-auto h-40 object-cover mb-2">
+                    <img src="img/descarga.png" alt="Producto 1" class="mx-auto h-40 object-cover mb-2">
                     <h3 class="text-gray-900 font-medium">Funda de goma</h3>
                     <p class="text-gray-500">para iphone</p>
                     <p class="text-red-500 font-semibold">$400</p>
@@ -292,7 +292,7 @@
                 <!-- Producto 1 -->
                 <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
 
-                    <img src="/img/descarga.png" alt="Producto 1" class="mx-auto h-40 object-cover mb-2">
+                    <img src="img/descarga.png" alt="Producto 1" class="mx-auto h-40 object-cover mb-2">
                     <h3 class="text-gray-900 font-medium">Cargador de samsung</h3>
                     <p class="text-gray-500">samsung</p>
                     <p class="text-red-500 font-semibold">$300</p>
@@ -307,7 +307,7 @@
                 <!-- Producto 1 -->
                 <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
 
-                    <img src="/img/descarga.png" alt="Producto 1" class="mx-auto h-40 object-cover mb-2">
+                    <img src="img/descarga.png" alt="Producto 1" class="mx-auto h-40 object-cover mb-2">
                     <h3 class="text-gray-900 font-medium">Funda de plastico</h3>
                     <p class="text-gray-500">para xiaomy</p>
                     <p class="text-red-500 font-semibold">$200</p>

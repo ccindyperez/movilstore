@@ -72,10 +72,10 @@
             @else
                 <!-- Botones de Inicio de Sesión y Registro - Usuario no autenticado -->
                 <div class="hidden md:flex space-x-4">
-                    <a href="/singup"
+                    <a href="singup"
                         class="bg-transparent border border-white py-1 px-4 rounded hover:bg-blue-300">Iniciar
                         Sesión</a>
-                    <a href="/singup" class="bg-blue-600 py-1 px-4 rounded hover:bg-blue-700">Registrarse</a>
+                    <a href="singup" class="bg-blue-600 py-1 px-4 rounded hover:bg-blue-700">Registrarse</a>
                 </div>
             @endif
 

@@ -77,7 +77,7 @@
 
                 <!-- Botón para agregar un nuevo producto -->
                 <div class="flex justify-end mb-4">
-                    <a href="/user/crear"
+                    <a href="user/crear"
                         class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
